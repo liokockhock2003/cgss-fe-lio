@@ -1,0 +1,25 @@
+{
+  "experimentalTernaries": true,
+  "jsxSingleQuote": true,
+  "quoteProps": "as-needed",
+  "trailingComma": "all",
+  "singleAttributePerLine": false,
+  "htmlWhitespaceSensitivity": "css",
+
+  "tabWidth": 2,
+  "useTabs": false,
+  "singleQuote": true,
+  "semi": false,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "bracketSameLine": true,
+  "printWidth": 120,
+  "importOrder": [
+    "^w",
+    "^(@shared|@page|@env|@test-utilities)(/.*|$)",
+    "^[./|~/]"
+  ],
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports"
+  ]
+}

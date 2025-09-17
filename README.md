@@ -1,0 +1,48 @@
+TODO
+
+- ~~mobile registry!!
+  - ~~mobile combustion!!
+- ~~scope2!!
+- ~~emission factor page!!
+  - ~~user can add any year in sequence~~
+  - ~~only system admin can do and access it.~~
+  - ~~need to validate api except the dropdown api~~
+- Setting > General
+  - ~~user can change theme~~
+  - ~~only company admin can do this~~
+- Scope3
+  - ~~Business travel~~
+  - ~~Employee commuting~~
+  - Waste
+  - ~~Upstream and downstream transportation~~
+- ~~dashboard graphs~~
+  - ~~no filter too complex already~~
+- TechDebt
+  - sidebar auto open on first load
+  - use shadcn new sidebar comp
+  - all module have group & year/FY dropdown filter
+  - ~~convert all ag-grid tables to tanstack table~~
+    - collapsible by year/financial year
+    - react-scan
+    - remove 
+      - human-format, 
+      - zustand, 
+      - rc-input-number in favour of (https://mantine.dev/core/number-input/) (https://www.npmjs.com/package/react-number-format),
+      - react-contenteditable
+      - charts lib 
+      - core-ui-lib
+      - ag-grid
+      - @blueprintjs/core
+      - @mantine/hooks
+      - simplebar-react
+      - @deprecated @react-google-maps/api
+      - prop-types
+  - deployment?
+    - 
+- honojs
+  - monorepo with pnpm workspace, turborepo
+  - hono use it with react-query (https://hono.dev/docs/guides/rpc#client)
+  - better-auth
+  - drizzle-orm
+  - partytown time
+  - redis for emission-factor

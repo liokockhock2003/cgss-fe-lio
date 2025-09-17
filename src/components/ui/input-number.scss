@@ -1,0 +1,75 @@
+@reference '../../../scss/globals.scss';
+
+.rc-input-number {
+  @apply flex w-full h-10 rounded-md border border-input text-sm flex-row-reverse overflow-hidden;
+  @apply disabled:cursor-not-allowed disabled:opacity-50;
+  @apply file:border-0 file:bg-transparent file:text-sm file:font-medium;
+
+  &-focused {
+    @apply ring-offset-background outline-none ring-2 ring-ring ring-offset-2; // This defines a blue border color (#1890ff) by default
+  }
+
+  &-out-of-range {
+    input {
+      @apply text-destructive;
+    }
+  }
+
+  &-handler {
+    @apply block h-3 overflow-hidden leading-3 text-center touch-none;
+  }
+
+  &-handler-up-inner,
+  &-handler-down-inner {
+    color: inherit;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  &-input-wrap {
+    @apply w-full h-full overflow-hidden placeholder:text-muted-foreground border-r border-r-input;
+  }
+
+  &-input {
+    @apply outline-0 w-full text-inherit h-full border-0 rounded px-3 py-2 text-right bg-background;
+  }
+
+  &-handler-wrap {
+    transition-duration: 0.3s;
+    @apply transition flex h-full w-[40px] flex-col;
+
+    > * {
+      @apply flex-1;
+    }
+  }
+
+  &-handler-up {
+    @apply border-b transition-all h-full w-full flex items-center justify-center pt-px hover:bg-accent;
+
+    &-inner {
+      &:after {
+        content: '+';
+      }
+    }
+  }
+
+  &-handler-down {
+    @apply transition-all h-full w-full flex items-center justify-center pt-px hover:bg-accent;
+
+    &-inner {
+      &:after {
+        content: '-';
+      }
+    }
+  }
+
+  &-disabled {
+    @apply cursor-not-allowed opacity-50;
+
+    .rc-input-number-input,
+    .rc-input-number-handler-up-inner,
+    .rc-input-number-handler-down-inner {
+      @apply cursor-not-allowed opacity-50;
+    }
+  }
+}

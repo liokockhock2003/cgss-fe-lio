@@ -1,0 +1,28 @@
+@reference '../../../scss/globals.scss';
+
+.home {
+  &--grid {
+    @apply grid grid-cols-1 h-full auto-rows-auto
+           sm:grid-cols-2
+           md:grid-cols-4 gap-2;
+  }
+
+  &--summary {
+    @apply p-4 sm:col-span-full justify-center
+           md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-2;
+  }
+
+  &--pie-chart {
+    @apply p-4 col-span-full
+           md:col-start-3 md:col-end-[-1] md:row-start-1 md:row-end-4;
+  }
+
+  &--line-chart {
+    @apply p-4 col-span-full
+           md:col-start-1 md:col-end-3 md:row-start-2 md:row-end-4;
+  }
+
+  &--stackbar-chart {
+    @apply p-4 col-span-full min-h-min;
+  }
+}

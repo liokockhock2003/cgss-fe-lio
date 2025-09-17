@@ -1,0 +1,19 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    networks:
+      - ghgcope-be
+    labels:
+      - "coolify.expose=true"
+      - "coolify.name=ghgcope-fe"
+      - "coolify.port=80"
+    expose:
+      - "80"
+
+networks:
+  ghgcope-be:
+    external: true
+    name: ghgcope-be

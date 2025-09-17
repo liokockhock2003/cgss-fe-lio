@@ -1,0 +1,14 @@
+@reference '../../../../../../../scss/globals.scss';
+
+.formFuelTypeAndVehicleTypeWrapper {
+  @apply grid grid-cols-2 gap-x-1 w-full;
+
+  label {
+    @apply hidden;
+  }
+
+  button {
+    /// TODO
+    //@apply mt-0 #{!important};
+  }
+}

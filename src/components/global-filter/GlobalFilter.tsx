@@ -24,8 +24,11 @@ export const GlobalFilter = () => {
   }, [confQuery.data])
 
   const enableGlobalDateRange = useMemo(() => {
-    const routes = ['scope1', 'scope2', 'scope3', 'dashboard', 'production'].map((i) => `/emission/${i}/*`)
-    return routes.find((route) => matchPath(route, pathname))
+    const emissionRoutes = ['summary', 'scope1', 'scope2', 'scope3', 'dashboard', 'production'].map((i) => `/emission/${i}/*`)
+    const iframeRoutes = ['/dashboard-iframe/*', '/dashboard-iframe'] // Add iframe routes
+
+    const allRoutes = [...emissionRoutes, ...iframeRoutes]
+    return allRoutes.find((route) => matchPath(route, pathname))
   }, [pathname])
 
   return isEnable ?

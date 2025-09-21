@@ -56,7 +56,7 @@ export const Scopes = ({ params }) => {
 
   return (
     <Card className='flex flex-col flex-1 w-full h-full'>
-      <CardHeader className='flex-row flex-wrap flex justify-between items-center'>
+      <CardHeader className='flex flex-row flex-wrap items-center justify-between'>
         <CardTitle className='flex gap-x-0.5 items-end'>
           Scopes
           <span className='text-muted-foreground'>({ChemicalSymbol('TONCO2E')})</span>
@@ -69,7 +69,7 @@ export const Scopes = ({ params }) => {
             options={_options}
             onChange={setSelected}
             CustomOptionTemplate={({ option }) => (
-              <div className='flex justify-between items-center w-full'>
+              <div className='flex items-center justify-between w-full'>
                 <span>{option.label}</span>
                 <span>{humanFormat(pieData?.find((_) => _.type === option.value)?.emissions.toNumber() ?? 0)}</span>
               </div>
@@ -96,12 +96,12 @@ export const Scopes = ({ params }) => {
           </div>
         ),
         Loading: (
-          <CardContent className='py-20 flex justify-center items-center h-full'>
+          <CardContent className='flex items-center justify-center h-full py-20'>
             <Loading2 />
           </CardContent>
         ),
         Success: () => (
-          <CardContent className='flex flex-wrap lg:flex-nowrap flex-1 overflow-hidden h-full gap-4'>
+          <CardContent className='flex flex-wrap flex-1 h-full gap-4 overflow-hidden lg:flex-nowrap'>
             <PieScopes data={pieData} />
             <BarChartEmissionByScope data={stackedBarData} />
           </CardContent>

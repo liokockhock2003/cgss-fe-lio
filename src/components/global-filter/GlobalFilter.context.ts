@@ -95,8 +95,11 @@ export const useGlobalFilterEnable = () => {
   const { pathname } = useLocation()
 
   const isEnableGlobalFilter = useMemo(() => {
-    const routes = ['summary', 'scope1', 'scope2', 'scope3', 'dashboard', 'production'].map((i) => `/emission/${i}/*`)
-    return routes.find((route) => matchPath(route, pathname))
+    const emissionRoutes = ['summary', 'scope1', 'scope2', 'scope3', 'dashboard', 'production'].map((i) => `/emission/${i}/*`)
+    const iframeRoutes = ['/dashboard-iframe/*', '/dashboard-iframe'] // Add iframe routes
+
+    const allRoutes = [...emissionRoutes, ...iframeRoutes]
+    return allRoutes.find((route) => matchPath(route, pathname))
   }, [pathname])
 
   return isEnableGlobalFilter

@@ -26,18 +26,18 @@ export function PieScopes({ data = [] }: { data: DashboardEmissionResponse['pieS
   )
 
   return (
-    <Card className='w-full lg:w-1/3 flex flex-col'>
-      <CardHeader className='flex-row flex justify-between items-center pb-0 flex-wrap'>
+    <Card className='flex flex-col w-full h-full lg:w-1/3'>
+      <CardHeader className='flex flex-row flex-wrap items-center justify-between flex-shrink-0 pb-0'>
         <CardTitle className='flex gap-x-2'>Overall</CardTitle>
       </CardHeader>
 
       <>
         {isEmpty ?
-          <CardContent className='flex items-center justify-center flex-col gap-4 flex-1'>
+          <CardContent className='flex flex-col items-center justify-center flex-1 gap-4'>
             <IconCustomEmptyState className='w-20 h-20' />
             <p className='text-lg'>Sorry no data</p>
           </CardContent>
-        : <CardContent className='flex items-center justify-center flex-col gap-4 py-4'>
+        : <CardContent className='flex flex-col items-center justify-center flex-1 gap-2 py-4'>
             <PieContainer data={data} total={humanFormat(total.toNumber())} />
             <TreeContainer total={total} />
           </CardContent>
@@ -56,7 +56,7 @@ const TreeContainer = memo(({ total }: { total: Decimal }) => {
   const _totalFormatted = valueFormatter(_total, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
 
   return (
-    <div className='flex gap-2 items-center text-balance justify-center'>
+    <div className='flex items-center justify-center gap-2 text-balance'>
       <figure>
         <img src='/icons/tree.svg' className='size-10' alt='Tree image' />
         <figcaption className='hidden'>
@@ -82,7 +82,7 @@ const PieContainer = memo(({ data, total }: { data: DashboardEmissionResponse['p
   return (
     <ChartContainer
       config={chartConfig}
-      className='w-full h-full aspect-square pb-0 [&_.recharts-pie-label-text]:fill-foreground'>
+      className='flex-1 aspect-square pb-0 [&_.recharts-pie-label-text]:fill-foreground'>
       <PieChart>
         <ChartTooltip
           content={
@@ -92,7 +92,7 @@ const PieContainer = memo(({ data, total }: { data: DashboardEmissionResponse['p
                 return (
                   <>
                     <div className={cn('inline-flex flex-1 justify-between leading-none gap-1.5')}>
-                      <div className='text-muted-foreground capitalize'>{item.name}</div>
+                      <div className='capitalize text-muted-foreground'>{item.name}</div>
 
                       <span className='flex gap-1 font-mono font-medium tabular-nums text-foreground'>
                         {valueFormatter(item.value as number)}
@@ -109,7 +109,7 @@ const PieContainer = memo(({ data, total }: { data: DashboardEmissionResponse['p
           }
         />
 
-        <Pie data={_data} innerRadius={70} strokeWidth={5} dataKey='emissions' nameKey='type'>
+        <Pie data={_data} innerRadius={50} outerRadius={90} strokeWidth={5} dataKey='emissions' nameKey='type'>
           <LabelList
             dataKey='type'
             className='fill-background'
@@ -123,7 +123,7 @@ const PieContainer = memo(({ data, total }: { data: DashboardEmissionResponse['p
               if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
                 return (
                   <text x={viewBox.cx} y={viewBox.cy} textAnchor='middle' dominantBaseline='middle'>
-                    <tspan x={viewBox.cx} y={viewBox.cy} className='fill-foreground text-2xl font-bold'>
+                    <tspan x={viewBox.cx} y={viewBox.cy} className='text-2xl font-bold fill-foreground'>
                       {total}
                     </tspan>
                     <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className='fill-muted-foreground'>

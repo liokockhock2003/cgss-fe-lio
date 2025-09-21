@@ -48,12 +48,15 @@ export function Metrics({ params }) {
   })
 
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 *:data-[slot=card]:shadow-xs gap-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card'>
+    <div className='grid h-full gap-4' style={{ gridTemplateRows: `repeat(${metrics.length}, 1fr)` }}>
       {metrics.map((metric) => (
-        <Card key={metric.display} className='flex relative overflow-hidden group flex-1'>
+        <Card key={metric.display} className='relative flex flex-col h-full overflow-hidden group'>
           <CardHeader className='relative'>
-            <CardDescription>{metric.display}</CardDescription>
-            <CardTitle className='text-2xl font-semibold tabular-nums my-auto flex'>
+            {/* Bigger description */}
+            <CardDescription className='text-xl font-medium'>{metric.display}</CardDescription>
+
+            {/* Much bigger title/value */}
+            <CardTitle className='flex my-auto text-5xl font-extrabold tabular-nums'>
               {metric.key === 'emissions' ?
                 <DisplayValue
                   isError={scopeQuery.isError}
@@ -70,10 +73,12 @@ export function Metrics({ params }) {
               }
             </CardTitle>
           </CardHeader>
+
+          {/* Bigger image shifted outside bottom-right corner */}
           <img
             alt='icon'
-            src={'/icons/' + metric.icon}
-            className='aspect-3/2 opacity-[.15] absolute right-[-20px] top-[40px] w-[100px] h-[100px] blur-[1px] group-hover:blur-none'
+            src={`/icons/${metric.icon}`}
+            className='absolute bottom-[-20px] right-[-20px] w-[160px] h-[160px] opacity-20 blur-[1px] group-hover:blur-none'
           />
         </Card>
       ))}
@@ -96,8 +101,13 @@ const DisplayValue = ({
     isPending ? <Skeleton className='w-[100px] h-[20px] rounded-full' />
     : isError ? <div>0</div>
     : <div className='flex flex-col'>
-        <div>{valueFormatter(n, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</div>
-        <div className='text-sm text-muted-foreground/80'>{unit}</div>
+        <div className='text-5xl font-bold'>
+          {valueFormatter(n, {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          })}
+        </div>
+        <div className='text-lg tracking-wide text-muted-foreground/80'>{unit}</div>
       </div>
   )
 }

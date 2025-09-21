@@ -84,6 +84,10 @@ export const router = createBrowserRouter(
       element: <LayoutBase />,
       children: [
         {
+          path: '/dashboard-iframe',
+          lazy: () => import('@/pages/Emission/Dashboard/IframeLayout.tsx'),
+        },
+        {
           path: '/',
           handle: {
             crumb: () => {

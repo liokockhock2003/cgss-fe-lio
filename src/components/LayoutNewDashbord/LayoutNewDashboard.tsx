@@ -24,33 +24,34 @@ export const LayoutNewDashboard = () => {
 
       <main
         className={cn(
-          'h-full flex flex-col',
+          'h-screen flex flex-col', // Changed to h-screen
           'transition-[margin-left] ease-in-out duration-300 bg-muted/40',
           sidebar ? 'md:ml-72' : 'md:ml-[90px]',
         )}>
-        <header className='sticky top-0 z-10 w-full bg-background dark:shadow-secondary'>
-          <div className='flex h-16 items-center border-b border-bg-accent px-8'>
+        <header className='sticky top-0 z-10 flex-shrink-0 w-full bg-background dark:shadow-secondary'>
+          <div className='flex items-center h-16 px-8 border-b border-bg-accent'>
             <div className='flex items-center space-x-4 lg:space-x-0'>
               <MenuSheet />
             </div>
-            <div className='flex flex-1 items-center space-x-2 justify-end'>
+            <div className='flex items-center justify-end flex-1 space-x-2'>
               <ThemeToggle />
               <UserNav />
             </div>
           </div>
         </header>
 
-        {/* Suspense here because useSuspenseQuery(CompanyConfigurationQuery.fetch()) */}
         <Suspense>
-          <div className='py-4 px-8 flex-1 flex flex-col gap-y-4'>
-            <div className='flex items-center flex-wrap gap-y-2 justify-between'>
+          <div className='flex flex-col flex-1 min-h-0 px-8 py-4 overflow-hidden gap-y-4'>
+            <div className='flex flex-wrap items-center justify-between flex-shrink-0 gap-y-2'>
               <Breadcrumbs2 />
-              <div id='breadcrumb-right-side' className='flex gap-x-2 items-center'>
+              <div id='breadcrumb-right-side' className='flex items-center gap-x-2'>
                 <GlobalFilter />
               </div>
             </div>
 
-            <Outlet />
+            <div className='flex-1 min-h-0 overflow-hidden'>
+              <Outlet />
+            </div>
           </div>
         </Suspense>
       </main>

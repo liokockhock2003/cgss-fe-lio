@@ -5,15 +5,15 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     networks:
-      - ghgcope-be_default
+      - ghgcope-be
     labels:
       - "coolify.expose=true"
-      - "coolify.name=ghgcope-fe"
+      - "coolify.name=ghgcope-fe-v2"
       - "coolify.port=80"
-    ports:
-      - "3000:80"
+    expose:
+      - "80"
 
 networks:
-  ghgcope-be_default:
+  ghgcope-be:
     external: true
-    name: ghgcope-be_default
+    name: ghgcope-be

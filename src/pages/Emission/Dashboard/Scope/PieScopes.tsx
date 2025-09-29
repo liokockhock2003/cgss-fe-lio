@@ -109,12 +109,12 @@ const PieContainer = memo(({ data, total }: { data: DashboardEmissionResponse['p
           }
         />
 
-        <Pie data={_data} innerRadius={50} outerRadius={90} strokeWidth={5} dataKey='emissions' nameKey='type'>
+        <Pie data={_data} innerRadius={30} outerRadius={50} strokeWidth={5} dataKey='emissions' nameKey='type'>
           <LabelList
             dataKey='type'
             className='fill-background'
             stroke='none'
-            fontSize={12}
+            fontSize={10}
             formatter={(value: keyof typeof chartConfig) => chartConfig[value]?.label}
           />
 
@@ -122,11 +122,19 @@ const PieContainer = memo(({ data, total }: { data: DashboardEmissionResponse['p
             content={({ viewBox }) => {
               if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
                 return (
-                  <text x={viewBox.cx} y={viewBox.cy} textAnchor='middle' dominantBaseline='middle'>
-                    <tspan x={viewBox.cx} y={viewBox.cy} className='text-2xl font-bold fill-foreground'>
+                  <text
+                    x={viewBox.cx}
+                    y={viewBox.cy}
+                    textAnchor='middle'
+                    dominantBaseline='middle'
+                    className='leading-tight'>
+                    <tspan x={viewBox.cx} y={viewBox.cy} className='text-lg font-semibold fill-foreground'>
                       {total}
                     </tspan>
-                    <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className='fill-muted-foreground'>
+                    <tspan
+                      x={viewBox.cx}
+                      y={(viewBox.cy || 0) + 16} // reduced spacing
+                      className='text-xs fill-muted-foreground'>
                       emissions
                     </tspan>
                   </text>

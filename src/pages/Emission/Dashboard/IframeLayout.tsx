@@ -35,17 +35,23 @@ function IframeLayout() {
               <p className='text-lg'>Please create group</p>
             </div>
           : <>
-              <div className='flex flex-1 min-h-0 gap-4 overflow-hidden'>
+              <div
+                className='flex flex-1 min-h-0 overflow-hidden justify-center gap-x-[60px]'
+                style={{ maxHeight: 'calc(100vh - 100px)' }}>
                 {/* Left side */}
-                <div className='flex flex-col w-[80%] min-h-0 gap-4 overflow-hidden'>
-                  {/* Main Emission Intensity - flexible height */}
+                <div className='flex flex-col w-[70%] min-h-0 gap-4 overflow-hidden'>
+                  {/* Main Emission Intensity */}
                   <div className='flex-[9] min-h-0 overflow-hidden'>
-                    <MainEmissionIntensity params={params} />
+                    <div className='w-full h-full overflow-auto'>
+                      <MainEmissionIntensity params={params} />
+                    </div>
                   </div>
 
-                  {/* Scopes - flexible height */}
+                  {/* Scopes */}
                   <div className='flex-[10] min-h-0 overflow-hidden'>
-                    <Scopes params={params} />
+                    <div className='w-full h-full overflow-auto'>
+                      <Scopes params={params} />
+                    </div>
                   </div>
                 </div>
 

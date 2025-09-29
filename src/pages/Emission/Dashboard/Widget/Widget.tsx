@@ -52,11 +52,11 @@ export function Metrics({ params }) {
       {metrics.map((metric) => (
         <Card key={metric.display} className='relative flex flex-col h-full overflow-hidden group'>
           <CardHeader className='relative'>
-            {/* Bigger description */}
-            <CardDescription className='text-xl font-medium'>{metric.display}</CardDescription>
+            {/* Slightly smaller description */}
+            <CardDescription className='text-xs font-normal'>{metric.display}</CardDescription>
 
-            {/* Much bigger title/value */}
-            <CardTitle className='flex my-auto text-5xl font-extrabold tabular-nums'>
+            {/* Slightly smaller title/value */}
+            <CardTitle className='flex my-auto text-xl font-semibold tabular-nums'>
               {metric.key === 'emissions' ?
                 <DisplayValue
                   isError={scopeQuery.isError}
@@ -78,7 +78,7 @@ export function Metrics({ params }) {
           <img
             alt='icon'
             src={`/icons/${metric.icon}`}
-            className='absolute bottom-[-20px] right-[-20px] w-[160px] h-[160px] opacity-20 blur-[1px] group-hover:blur-none'
+            className='absolute bottom-[-25px] right-[-25px] w-[90px] h-[90px] opacity-20 blur-[1px] group-hover:blur-none'
           />
         </Card>
       ))}
@@ -98,16 +98,16 @@ const DisplayValue = ({
   unit: ReactNode
 }) => {
   return (
-    isPending ? <Skeleton className='w-[100px] h-[20px] rounded-full' />
+    isPending ? <Skeleton className='w-[60px] h-[12px] rounded-full' />
     : isError ? <div>0</div>
     : <div className='flex flex-col'>
-        <div className='text-5xl font-bold'>
+        <div className='text-4xl font-bold'>
           {valueFormatter(n, {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
           })}
         </div>
-        <div className='text-lg tracking-wide text-muted-foreground/80'>{unit}</div>
+        <div className='text-base tracking-wide text-muted-foreground/80'>{unit}</div>
       </div>
   )
 }

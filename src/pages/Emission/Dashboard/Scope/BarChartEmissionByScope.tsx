@@ -19,13 +19,13 @@ export function BarChartEmissionByScope({ data = [] }: { data: DashboardEmission
 
   return (
     <Card className='flex flex-col flex-1 w-full h-full'>
-      <CardHeader>
-        <CardTitle>Emission for each scopes</CardTitle>
+      <CardHeader className='pt-[0.694vw] pb-[0.694vw]'>
+        <CardTitle className='text-[1.25vw]'>Emission for each scopes</CardTitle>
       </CardHeader>
 
-      <CardContent className='flex-1 overflow-hidden'>
+      <CardContent className='flex-1 pb-0 pl-0 overflow-hidden pr-[2.778vw]'>
         {isEmpty ?
-          <div className='flex items-center justify-center flex-col gap-4 h-full'>
+          <div className='flex flex-col items-center justify-center h-full gap-4'>
             <IconCustomEmptyState className='w-20 h-20' />
             <p className='text-lg'>Sorry no data</p>
           </div>

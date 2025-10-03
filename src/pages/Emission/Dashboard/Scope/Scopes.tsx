@@ -56,8 +56,8 @@ export const Scopes = ({ params }) => {
 
   return (
     <Card className='flex flex-col flex-1 w-full h-full'>
-      <CardHeader className='flex flex-row flex-wrap items-center justify-between'>
-        <CardTitle className='flex gap-x-0.5 items-end'>
+      <CardHeader className='flex flex-row flex-wrap items-center justify-between py-[0.833vw] px-[1.667vw]'>
+        <CardTitle className='flex gap-x-0.5 items-end text-[1.389vw]'>
           Scopes
           <span className='text-muted-foreground'>({ChemicalSymbol('TONCO2E')})</span>
         </CardTitle>
@@ -101,7 +101,7 @@ export const Scopes = ({ params }) => {
           </CardContent>
         ),
         Success: () => (
-          <CardContent className='flex flex-wrap flex-1 h-full gap-4 overflow-hidden lg:flex-nowrap'>
+          <CardContent className='flex flex-wrap flex-1 h-full gap-4 overflow-hidden lg:flex-nowrap pb-[0.833vw]'>
             <PieScopes data={pieData} />
             <BarChartEmissionByScope data={stackedBarData} />
           </CardContent>

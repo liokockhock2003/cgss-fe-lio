@@ -48,12 +48,12 @@ export function Metrics({ params }) {
   })
 
   return (
-    <div className='grid h-full gap-4' style={{ gridTemplateRows: `repeat(${metrics.length}, 1fr)` }}>
+    <div className='grid h-full gap-2' style={{ gridTemplateRows: `repeat(${metrics.length}, 1fr)` }}>
       {metrics.map((metric) => (
         <Card key={metric.display} className='relative flex flex-col h-full overflow-hidden group'>
-          <CardHeader className='relative'>
+          <CardHeader className='relative p-[0.833vw]'>
             {/* Slightly smaller description */}
-            <CardDescription className='text-xs font-normal'>{metric.display}</CardDescription>
+            <CardDescription className='text-[0.833vw] font-normal'>{metric.display}</CardDescription>
 
             {/* Slightly smaller title/value */}
             <CardTitle className='flex my-auto text-xl font-semibold tabular-nums'>
@@ -101,13 +101,13 @@ const DisplayValue = ({
     isPending ? <Skeleton className='w-[60px] h-[12px] rounded-full' />
     : isError ? <div>0</div>
     : <div className='flex flex-col'>
-        <div className='text-4xl font-bold'>
+        <div className='text-2xl font-bold'>
           {valueFormatter(n, {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
           })}
         </div>
-        <div className='text-base tracking-wide text-muted-foreground/80'>{unit}</div>
+        <div className='text-base tracking-wide text-muted-foreground/80 text-[0.833vw]'>{unit}</div>
       </div>
   )
 }

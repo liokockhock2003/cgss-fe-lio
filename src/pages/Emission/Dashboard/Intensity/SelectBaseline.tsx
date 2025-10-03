@@ -25,17 +25,17 @@ export const SelectBaseline = ({
 
   return (
     <Select value={baseline ? baseline + '' : undefined} onValueChange={(selectedYear) => setBaseline(+selectedYear)}>
-      <SelectTrigger className='w-full flex gap-x-2'>
+      <SelectTrigger className='flex w-full gap-x-2'>
         {isLoading ?
-          <Loading2 className='h-4 w-4 opacity-50' />
+          <Loading2 className='w-4 h-4 opacity-50' />
         : <SelectValue placeholder='Select baseline' />}
       </SelectTrigger>
       <SelectContent className='w-auto'>
         <SelectGroup>
           {yearsOptions.length === 0 ?
-            <div className='flex items-center justify-center flex-col gap-1 w-100'>
+            <div className='flex flex-col items-center justify-center gap-1 w-100'>
               <IconCustomEmptyState className='size-10' />
-              <span className='ml-2 text-muted-foreground text-center'>
+              <span className='ml-2 text-center text-muted-foreground'>
                 Sorry no data. <br />
                 please fill in emissions and productions
               </span>

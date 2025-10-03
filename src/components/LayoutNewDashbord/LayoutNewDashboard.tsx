@@ -41,7 +41,7 @@ export const LayoutNewDashboard = () => {
         </header>
 
         <Suspense>
-          <div className='flex flex-col flex-1 min-h-0 px-8 py-4 overflow-hidden gap-y-4'>
+          <div className='flex flex-col flex-1 min-h-0 px-8 py-4 gap-y-4'>
             <div className='flex flex-wrap items-center justify-between flex-shrink-0 gap-y-2'>
               <Breadcrumbs2 />
               <div id='breadcrumb-right-side' className='flex items-center gap-x-2'>
@@ -49,7 +49,7 @@ export const LayoutNewDashboard = () => {
               </div>
             </div>
 
-            <div className='overflow-hidden flex-2'>
+            <div className='flex-2'>
               <Outlet />
             </div>
           </div>

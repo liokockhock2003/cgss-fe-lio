@@ -37,7 +37,7 @@ export function LineChartEmissionIntensity({
   const baselineEmission = useMemo(() => data.find((i) => i.entry.includes(baseline + '')), [baseline, data])
 
   return isEmpty ?
-      <div className='flex items-center justify-center flex-col gap-4 h-full'>
+      <div className='flex flex-col items-center justify-center h-full gap-4'>
         <IconCustomEmptyState className='w-20 h-20' />
         <p className='text-lg'>Sorry no data</p>
       </div>
@@ -71,7 +71,7 @@ export function LineChartEmissionIntensity({
             dataKey='emissionIntensity'
             orientation='left'
             label={LabelTonCo2e}
-            padding={{ top: 80 }}
+            padding={{ top: 55 }}
           />
           <ReferenceLine
             yAxisId='left'
@@ -97,7 +97,7 @@ export function LineChartEmissionIntensity({
             dataKey='production'
             orientation='right'
             label={LabelTon}
-            padding={{ top: 80 }}
+            padding={{ top: 55 }}
             tickFormatter={(v) => valueToHumanFormatter(v, { decimals: 0 })}
           />
 
@@ -119,7 +119,7 @@ export function LineChartEmissionIntensity({
 const LabelTonCo2e = (props) => (
   <g>
     <foreignObject
-      style={{ color: 'hsl(var(--muted-foreground))' }}
+      style={{ color: 'hsl(var(--muted-foreground))', fontSize: '0.694vw' }}
       x={props.viewBox?.x}
       y={0}
       width={props.viewBox?.width}
@@ -133,7 +133,7 @@ const LabelTon = (props) => {
   return (
     <g>
       <foreignObject
-        style={{ color: 'hsl(var(--muted-foreground))' }}
+        style={{ color: 'hsl(var(--muted-foreground))', fontSize: '0.694vw' }}
         x={props.viewBox?.x + 10}
         y={0}
         width={props.viewBox?.width + 2}

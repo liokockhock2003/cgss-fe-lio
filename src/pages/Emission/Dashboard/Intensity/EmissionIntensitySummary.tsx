@@ -19,12 +19,12 @@ export const EmissionIntensitySummary = ({
     !baseline ?
       <>
         <IconCustomEmptyState className='size-10' />
-        <span className='ml-2 text-muted-foreground text-center'>baseline not selected</span>
+        <span className='ml-2 text-center text-muted-foreground'>baseline not selected</span>
       </>
       //   NOTES: there is some problem if company financialYearStartMonth null or 1
     : !base || !against ?
       <>
-        <div className='flex flex-col text-muted-foreground text-center'>
+        <div className='flex flex-col text-center text-muted-foreground'>
           <p>unable to match.</p>
           <div>
             Please help key-in
@@ -43,7 +43,7 @@ export const EmissionIntensitySummary = ({
         <Badge
           variant='outline'
           className={cn(
-            'text-2xl font-semibold border-transparent',
+            'text-[1.25vw] font-semibold border-transparent',
             against.percent.eq(0) ? 'bg-muted text-muted-foreground'
             : against.percent.lt(0) ? 'bg-green-300 text-green-900'
             : 'bg-red-200 text-red-900',
@@ -51,7 +51,7 @@ export const EmissionIntensitySummary = ({
           {against.percent.abs().toFixed(2)}%
         </Badge>
 
-        <div className='leading-7 flex gap-x-1 mb-4'>
+        <div className='flex mb-1 leading-7 gap-x-1 text-[0.972vw]'>
           against
           <span>
             {isFY ? 'FY' : ''}
@@ -59,7 +59,7 @@ export const EmissionIntensitySummary = ({
           </span>
         </div>
 
-        <h1 className='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl'>
+        <h1 className='font-extrabold tracking-tight scroll-m-20 lg:text-4xl'>
           {valueFormatter(base.emissionIntensity.toNumber(), { minimumFractionDigits: 3, maximumFractionDigits: 3 })}
         </h1>
         <div className='text-sm font-medium leading-none text-muted-foreground'>{ChemicalSymbol('TONCO2E')}/t</div>

@@ -14,7 +14,7 @@ function EmissionDashboardPage() {
   const params = useMemo(() => ({ from, to, groupByIds }), [from, to, groupByIds])
 
   return (
-    <div className={cn(styles.emissionDashboard, 'flex flex-col w-full h-full gap-4 p-4 box-border overflow-hidden')}>
+    <div className={cn(styles.emissionDashboard, 'flex flex-col w-full h-full gap-4 p-4 pt-0 pb-0 box-border')}>
       {groupByIds.length <= 0 ?
         <div className='flex flex-col items-center justify-center flex-1 gap-4'>
           <IconCustomEmptyState className='w-20 h-20' />
@@ -22,10 +22,10 @@ function EmissionDashboardPage() {
         </div>
       : <>
           <div
-            className='flex flex-1 min-h-0 overflow-hidden justify-center gap-x-[60px]'
-            style={{ maxHeight: 'calc(100vh - 130px)' }}>
+            className='flex justify-center flex-1 min-h-0 gap-4 overflow-hidden'
+            style={{ maxHeight: 'calc(92vh - 6.65vw)' }}>
             {/* Left side */}
-            <div className='flex flex-col w-[70%] min-h-0 gap-4 overflow-hidden'>
+            <div className='flex flex-col w-[80%] min-h-0 gap-2 overflow-hidden'>
               {/* Main Emission Intensity */}
               <div className='flex-[9] min-h-0 overflow-hidden'>
                 <div className='w-full h-full overflow-auto'>

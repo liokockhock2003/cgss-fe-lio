@@ -36,10 +36,10 @@ function IframeLayout() {
             </div>
           : <>
               <div
-                className='flex flex-1 min-h-0 overflow-hidden justify-center gap-x-[60px]'
+                className='flex justify-center flex-1 min-h-0 gap-4 overflow-hidden'
                 style={{ maxHeight: 'calc(100vh - 100px)' }}>
                 {/* Left side */}
-                <div className='flex flex-col w-[70%] min-h-0 gap-4 overflow-hidden'>
+                <div className='flex flex-col w-[80%] min-h-0 gap-2 overflow-hidden'>
                   {/* Main Emission Intensity */}
                   <div className='flex-[9] min-h-0 overflow-hidden'>
                     <div className='w-full h-full overflow-auto'>

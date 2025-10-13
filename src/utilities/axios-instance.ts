@@ -9,7 +9,7 @@ instance.interceptors.request.use(
   (req) => {
     const token = localStorage.getItem('token')
     req['headers']['x-tenant-id'] = getCurrentTenant()
-    req['headers']['authorization'] = token ? `${token}` : ''
+    req['headers']['authorization'] = token ? `Bearer ${token}` : ''
     req['headers']['Access-Control-Allow-Origin'] = '*'
     req['headers']['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
 

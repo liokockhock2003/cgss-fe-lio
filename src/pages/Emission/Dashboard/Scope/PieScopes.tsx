@@ -37,7 +37,7 @@ export function PieScopes({ data = [] }: { data: DashboardEmissionResponse['pieS
             <IconCustomEmptyState className='w-20 h-20' />
             <p className='text-lg'>Sorry no data</p>
           </CardContent>
-        : <CardContent className='flex flex-col items-center justify-center flex-1 gap-0 pt-4 pb-0 pl-4 pr-4'>
+        : <CardContent className='flex flex-col items-center justify-center flex-1 min-h-0 gap-0 pt-4 pb-0 pl-4 pr-4 overflow-hidden'>
             <PieContainer data={data} total={humanFormat(total.toNumber())} />
             <TreeContainer total={total} />
           </CardContent>
@@ -82,68 +82,68 @@ const PieContainer = memo(({ data, total }: { data: DashboardEmissionResponse['p
   return (
     <ChartContainer
       config={chartConfig}
-      className='flex-5 aspect-square pb-0 [&_.recharts-pie-label-text]:fill-foreground'>
-      <PieChart>
-        <ChartTooltip
-          content={
-            <ChartTooltipContent
-              hideLabel
-              tooltipRenderer={({ item }) => {
-                return (
-                  <>
-                    <div className={cn('inline-flex flex-2 justify-between leading-none gap-1.5')}>
-                      <div className='capitalize text-muted-foreground'>{item.name}</div>
+      className='w-full h-full max-w-full max-h-full pb-0 [&_.recharts-pie-label-text]:fill-foreground'>
+        <PieChart>
+          <ChartTooltip
+            content={
+              <ChartTooltipContent
+                hideLabel
+                tooltipRenderer={({ item }) => {
+                  return (
+                    <>
+                      <div className={cn('inline-flex flex-2 justify-between leading-none gap-1.5')}>
+                        <div className='capitalize text-muted-foreground'>{item.name}</div>
 
-                      <span className='flex gap-1 font-mono font-medium tabular-nums text-foreground'>
-                        {valueFormatter(item.value as number)}
-                      </span>
+                        <span className='flex gap-1 font-mono font-medium tabular-nums text-foreground'>
+                          {valueFormatter(item.value as number)}
+                        </span>
 
-                      <span className='flex gap-1 font-mono font-medium tabular-nums text-foreground'>
-                        ({valueFormatter(item.payload.percentage.toNumber())}%)
-                      </span>
-                    </div>
-                  </>
-                )
+                        <span className='flex gap-1 font-mono font-medium tabular-nums text-foreground'>
+                          ({valueFormatter(item.payload.percentage.toNumber())}%)
+                        </span>
+                      </div>
+                    </>
+                  )
+                }}
+              />
+            }
+          />
+
+          <Pie data={_data} innerRadius={32} outerRadius={62} strokeWidth={5} dataKey='emissions' nameKey='type'>
+            <LabelList
+              dataKey='type'
+              className='fill-background'
+              stroke='none'
+              fontSize={10}
+              formatter={(value: keyof typeof chartConfig) => chartConfig[value]?.label}
+            />
+
+            <Label
+              content={({ viewBox }) => {
+                if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
+                  return (
+                    <text
+                      x={viewBox.cx}
+                      y={viewBox.cy}
+                      textAnchor='middle'
+                      dominantBaseline='middle'
+                      className='leading-tight'>
+                      <tspan x={viewBox.cx} y={viewBox.cy - 4} className='text-lg font-semibold fill-foreground'>
+                        {total}
+                      </tspan>
+                      <tspan
+                        x={viewBox.cx}
+                        y={(viewBox.cy || 0) + 10} // reduced spacing
+                        className='text-xs fill-muted-foreground text-[0.694vw]'>
+                        emissions
+                      </tspan>
+                    </text>
+                  )
+                }
               }}
             />
-          }
-        />
-
-        <Pie data={_data} innerRadius={32} outerRadius={62} strokeWidth={5} dataKey='emissions' nameKey='type'>
-          <LabelList
-            dataKey='type'
-            className='fill-background'
-            stroke='none'
-            fontSize={10}
-            formatter={(value: keyof typeof chartConfig) => chartConfig[value]?.label}
-          />
-
-          <Label
-            content={({ viewBox }) => {
-              if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
-                return (
-                  <text
-                    x={viewBox.cx}
-                    y={viewBox.cy}
-                    textAnchor='middle'
-                    dominantBaseline='middle'
-                    className='leading-tight'>
-                    <tspan x={viewBox.cx} y={viewBox.cy - 4} className='text-lg font-semibold fill-foreground'>
-                      {total}
-                    </tspan>
-                    <tspan
-                      x={viewBox.cx}
-                      y={(viewBox.cy || 0) + 10} // reduced spacing
-                      className='text-xs fill-muted-foreground text-[0.694vw]'>
-                      emissions
-                    </tspan>
-                  </text>
-                )
-              }
-            }}
-          />
-        </Pie>
-      </PieChart>
+          </Pie>
+        </PieChart>
     </ChartContainer>
   )
 })

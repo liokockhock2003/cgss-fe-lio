@@ -37,7 +37,7 @@ export function PieScopes({ data = [] }: { data: DashboardEmissionResponse['pieS
             <IconCustomEmptyState className='w-20 h-20' />
             <p className='text-lg'>Sorry no data</p>
           </CardContent>
-        : <CardContent className='flex flex-col items-center justify-center flex-1 min-h-0 gap-0 pt-4 pb-0 pl-4 pr-4 overflow-hidden'>
+        : <CardContent className='flex flex-col items-center justify-center flex-1 min-h-0 gap-0 pt-4 pb-4 pl-4 pr-4 overflow-hidden'>
             <PieContainer data={data} total={humanFormat(total.toNumber())} />
             <TreeContainer total={total} />
           </CardContent>
